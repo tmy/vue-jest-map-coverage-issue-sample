@@ -1,0 +1,12 @@
+version: 2
+jobs:
+  build:
+    working_directory: /home/circleci/app
+    docker:
+      - image: circleci/node:8.9.2
+    steps:
+      - checkout
+      - run: npm install
+      - run: npm run unit
+      - store_artifacts:
+          path: test/unit/coverage
